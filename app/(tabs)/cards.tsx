@@ -1,7 +1,7 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { cssInterop } from "nativewind";
 import React, { useEffect, useRef, useState } from "react";
-import { Animated, Dimensions, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Animated, Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 cssInterop(LinearGradient, { className: "style" });
@@ -174,9 +174,25 @@ export default function Cards() {
                 >
                   {/* Card Header */}
                   <View className="flex-row items-center justify-between mb-4">
-                    <Text className="text-white font-medium text-sm">
-                      {card.name}
-                    </Text>
+                    <View className="flex-row items-center gap-3">
+                      <Text className="text-white font-medium text-sm">
+                        {card.name}
+                      </Text>
+                      <TouchableOpacity
+                        activeOpacity={0.8}
+                        onPress={() => {
+                          // Aquí puedes agregar la acción del botón settings
+                          console.log(`Settings for card ${card.id}`);
+                        }}
+                        className="w-6 h-6 rounded-full bg-white/20 items-center justify-center"
+                      >
+                        <Image
+                          source={require("../../assets/images/settings.png")}
+                          style={{ width: 14, height: 14, tintColor: "white" }}
+                          resizeMode="contain"
+                        />
+                      </TouchableOpacity>
+                    </View>
                     <Text className="text-white font-medium text-sm">
                       {card.number}
                     </Text>
