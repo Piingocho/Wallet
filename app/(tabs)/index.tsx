@@ -2,19 +2,18 @@
 import type { Action } from "@/interfaces/Action";
 import type { Transaction } from "@/interfaces/Transaction";
 import type { Transfer } from "@/interfaces/Transfer";
-import Feather from "@expo/vector-icons/Feather";
 import { LinearGradient } from "expo-linear-gradient";
 import { cssInterop } from "nativewind";
 import React from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 cssInterop(LinearGradient, { className: "style" });
 
 const actions: Action[] = [
-  { id: "topup", label: "Top up", icon: "arrow-up-circle" },
-  { id: "withdraw", label: "Withdraw", icon: "arrow-down-circle" },
-  { id: "transfer", label: "Transfer", icon: "repeat" },
+  { id: "topup", label: "Exchange", image: require("../../assets/images/convert-shapes.png") },
+  { id: "withdraw", label: "Withdraw", image: require("../../assets/images/deposit.png") },
+  { id: "transfer", label: "Transfer", image: require("../../assets/images/money-transfer-smartphone.png") },
 ];
 
 const transfers: Transfer[] = [
@@ -66,13 +65,26 @@ export default function Home() {
         <View className="px-5 pt-2">
           <View className="flex-row items-center justify-between">
             <View className="flex-row items-center gap-3">
-              <View className="h-10 w-10 rounded-full bg-amber-300 items-center justify-center">
+              <View className="h-10 w-10 rounded-full bg-emerald-100 items-center justify-center">
                 <Text className="font-semibold text-violet-900">A</Text>
               </View>
               <View>
                 <Text className="text-violet-800 font-semibold">Hello, Andres</Text>
               </View>
             </View>
+            <TouchableOpacity
+              className="h-12 w-12 items-center justify-center rounded-2xl bg-white/15"
+              activeOpacity={0.8}
+              onPress={() => {
+                // Aquí puedes agregar la acción al presionar el botón de settings
+              }}
+            >
+              <Image
+                source={require("../../assets/images/settings.png")}
+                style={{ width: 24, height: 24, tintColor: '#6D28D9' }}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
           </View>
 
           <View className="mt-3">
@@ -98,9 +110,13 @@ export default function Home() {
                     className="items-center"
                   >
                     <View className="h-12 w-12 items-center justify-center rounded-2xl bg-white/15">
-                      <Feather name={action.icon} size={24} color="white" />
+                      <Image
+                        source={action.image}
+                        style={{ width: 24, height: 24, tintColor: "white" }}
+                        resizeMode="contain"
+                      />
                     </View>
-                    <Text className="mt-2 text-xs text-white">
+                    <Text className="mt-2 text-xs text-white font-semibold">
                       {action.label}
                     </Text>
                   </TouchableOpacity>
@@ -148,7 +164,7 @@ export default function Home() {
               {transactions.map((tx) => (
                 <View key={tx.id} className="flex-row items-center gap-4 p-4">
                   <View className={`h-10 w-10 items-center justify-center rounded-xl ${tx.iconBg}`}>
-                    <Feather name={tx.icon} size={20} color="#111827" />
+                    <Text className="text-lg">T</Text>
                   </View>
                   <View className="flex-1">
                     <Text className="text-sm font-medium text-gray-900">

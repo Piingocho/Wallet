@@ -19,7 +19,7 @@ export default function TabsLayout() {
           tabBarIcon: ({ color, focused, size }) => (
             <View>
               <Image 
-                source={require("../../assets/images/react-logo.png")} 
+                source={require("../../assets/images/home.png")} 
                 style={{ width: size, height: size, tintColor: color }}
               />
             </View>
@@ -36,7 +36,7 @@ export default function TabsLayout() {
           tabBarIcon: ({ color, focused, size }) => (
             <View>
               <Image 
-                source={require("../../assets/images/react-logo.png")}  
+                source={require("../../assets/images/time-past.png")}  
                 style={{ width: size, height: size, tintColor: color }}
               />
             </View>
@@ -53,7 +53,7 @@ export default function TabsLayout() {
           tabBarIcon: ({ color, focused, size }) => (
             <View>
               <Image 
-                source={require("../../assets/images/react-logo.png")} 
+                source={require("../../assets/images/credit-card.png")} 
                 style={{ width: size, height: size, tintColor: color }}
               />
             </View>
@@ -70,7 +70,7 @@ export default function TabsLayout() {
           tabBarIcon: ({ color, focused, size }) => (
             <View>
               <Image 
-                source={require("../../assets/images/react-logo.png")} 
+                source={require("../../assets/images/circle-ellipsis.png")} 
                 style={{ width: size, height: size, tintColor: color }}
               />
             </View>
